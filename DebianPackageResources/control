@@ -1,0 +1,12 @@
+Source: indelible-vsan
+Maintainer: iGeek, Inc. <info@igeekinc.com>
+Section: utils
+Priority: optional
+Standards-Version: 3.8.4
+Build-Depends: openjdk-6-jdk, ant (>=1.7), debhelper (>=7), libavahi-client-dev
+
+Package: indelible-vsan
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, avahi-daemon, libavahi-client3, openjdk-7-jre
+Description: Indelible Virtual SAN
+ Provides iSCSI volumes backed by IndelibleFS

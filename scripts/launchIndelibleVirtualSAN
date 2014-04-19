@@ -1,0 +1,13 @@
+#!/bin/sh
+INDELIBLE_HOME=/usr/share/igeek/indelible-vsan/lib
+NATIVE_LIBS=/usr/lib/igeek/indelible-vsan
+CLASSPATH=""
+for i in "$INDELIBLE_HOME"/*.jar
+do
+	CLASSPATH="$CLASSPATH:$i"
+done
+echo $CLASSPATH
+export CLASSPATH
+rm -rf /Volumes/Duffle/Library/iscsi/stableDevices/*
+rm -rf /Volumes/Duffle/Library/iscsi/logDirectory/*
+/usr/bin/java -Djdbc.drivers=org.postgresql.Driver -Djava.library.path="$NATIVE_LIBS" com.igeekinc.indelible.indeliblefs.iscsi.local.IndelibleFSLocalStorageTarget | logger 2>&1

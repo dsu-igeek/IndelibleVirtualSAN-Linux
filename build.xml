@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="IndelibleVirtualSAN-Linux" default="buildDist" basedir=".">
+	<import file="../IndelibleVirtualSAN/version.xml"/>
+	<import file="../iGeekCommon-Linux/build-common-linux.xml"/>
+	<target name="localProperties">
+		<property name="jarName" value="IndelibleVSAN-Linux.jar"/>
+		<property name="debianBuild" value="${output}/Debian"/>
+		<property name="debianPackageName" value="indelible-vsan"/>
+		<property name="rpmSpecFile" value="indelible-vsan.spec"/>
+	</target>
+
+	<target name="setupOtherProjects">
+		<addOtherProject otherProjectName="iGeekCommon" classPathRefID="localLibs"/>
+		<addOtherProject otherProjectName="iGeekCommon-Linux" classPathRefID="localLibs"/>
+		<addOtherProject otherProjectName="IndelibleFSClient" classPathRefID="localLibs"/>
+		<addOtherProject otherProjectName="IndelibleFSClient-Linux" classPathRefID="localLibs"/>
+		<addOtherProject otherProjectName="IndelibleServerCore" classPathRefID="localLibs"/>
+		<addOtherProject otherProjectName="IndelibleServerCore-Linux" classPathRefID="localLibs"/>
+		<addOtherProject otherProjectName="jSCSI" classPathRefID="localLibs"/>
+		<addOtherProject otherProjectName="IndelibleVirtualSAN" classPathRefID="localLibs"/>
+		<addOtherProject otherProjectName="IndelibleWebAccess" classPathRefID="localLibs"/>
+		<addOtherProject otherProjectName="IndelibleWebAccess-Linux" classPathRefID="localLibs"/>
+	</target>
+	<target name="init" depends="iGeekBuildCommonLinux.init">
+		<mkdir dir="${debianBuild}"/>
+	</target>
+</project>
